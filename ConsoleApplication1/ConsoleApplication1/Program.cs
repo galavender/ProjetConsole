@@ -14,7 +14,7 @@ namespace ConsoleApplication1
             Genomica.ChargerDonnées();
             SortedDictionary<string, Taches> ActiAne = new SortedDictionary<string, Taches>();
             InitActivitésAnnexes(ref ActiAne);
-            Results.DuréeTravail("")
+            Console.WriteLine( Results.DuréeTravail(new Personnes() { Nom = "Geneviève", Prenom = "Leclerq", Code = "GL", Métier = new Metiers() { CodeMetier = CodeMetiers.ANA } },"2.00", Genomica));
 
             Console.ReadKey();
         }

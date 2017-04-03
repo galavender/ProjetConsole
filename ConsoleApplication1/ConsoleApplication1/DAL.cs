@@ -24,12 +24,24 @@ namespace ConsoleApplication1
             ListePersonne = new Dictionary<string, Personnes>();
             ListeTache = new Dictionary<string, Taches>();
             ListeDonnées = new Dictionary<int, DonnéesGestionTaches>();
+
+            ListePersonne.Add("GL", new Personnes() { Métier = new Metiers() { CodeMetier = CodeMetiers.ANA }, Nom = "Leclecq", Prenom = "Geneviève", Code = "GL" });
+            ListePersonne.Add("AF", new Personnes() { Métier = new Metiers() { CodeMetier = CodeMetiers.ANA }, Nom = "Ferrand", Prenom = "Angèle", Code = "AF" });
+            ListePersonne.Add("BN", new Personnes() { Métier = new Metiers() { CodeMetier = CodeMetiers.CDP }, Nom = "Normand", Prenom = "Balthazar", Code = "BN" });
+            ListePersonne.Add("RF", new Personnes() { Métier = new Metiers() { CodeMetier = CodeMetiers.DEV }, Nom = "Fisher", Prenom = "Raymond", Code = "RF" });
+            ListePersonne.Add("LB", new Personnes() { Métier = new Metiers() { CodeMetier = CodeMetiers.DEV }, Nom = "Butler", Prenom = "Lucien", Code = "LB" });
+            ListePersonne.Add("RB", new Personnes() { Métier = new Metiers() { CodeMetier = CodeMetiers.DEV }, Nom = "Beaumont", Prenom = "Roseline", Code = "RB" });
+            ListePersonne.Add("MW", new Personnes() { Métier = new Metiers() { CodeMetier = CodeMetiers.DES }, Nom = "Weber", Prenom = "Marguerite", Code = "MW" });
+            ListePersonne.Add("HK", new Personnes() { Métier = new Metiers() { CodeMetier = CodeMetiers.TES }, Nom = "Klein", Prenom = "Hilaire", Code = "HK" });
+            ListePersonne.Add("NP", new Personnes() { Métier = new Metiers() { CodeMetier = CodeMetiers.TES }, Nom = "Palmer", Prenom = "Nino", Code = "NP" });
+
         }
         #endregion
 
         #region Méthode
         public void ChargerDonnées()
         {
+            
             string chemin = @"..\..\Données.txt";  
             int compteur = 0;
             using (StreamReader str = new StreamReader(chemin)) 
@@ -42,11 +54,11 @@ namespace ConsoleApplication1
                     var tab = ligne.Split('\t');
                     try
                     {
-                        var DonnéesGestionTache = new DonnéesGestionTaches                   
+                        var DonnéesGestionTache = new DonnéesGestionTaches
                         {
-                            NumTache = int.Parse(tab[0]),                                           
-                            Version = new Versions() {Numéro = tab[1]},                             //Nouvelle instance de Version renseignant le numéro                          
-                            Personne = new Personnes() { Code = tab[2]},                            //Nouvelle instance de Personne renseignant le champ Code
+                            NumTache = int.Parse(tab[0]),
+                            Version = new Versions() { Numéro = tab[1] },                             //Nouvelle instance de Version renseignant le numéro                          
+                            Personne = ListePersonne[tab[2]],    //new Personnes() { Code = tab[2] },                            //Nouvelle instance de Personne renseignant le champ Code
                             CodeActivité = (Activités) Enum.Parse(typeof(Activités), tab[3]),
                             Tache = new TachesProd()                                                //Nouvelle instance de Tache renseignant tous ces champs
                             {
@@ -57,6 +69,7 @@ namespace ConsoleApplication1
                                 DuréeRestante = int.Parse(tab[8])
                             }
                         };
+                        
                         //Ajout de l'instance DonnéesGestionTaches à la collection de données
                         ListeDonnées.Add(compteur - 1, DonnéesGestionTache);
                         //Répartition des données dans les différentes collections
