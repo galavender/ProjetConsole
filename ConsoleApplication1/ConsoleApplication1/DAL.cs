@@ -24,6 +24,17 @@ namespace ConsoleApplication1
             ListePersonne = new Dictionary<string, Personnes>();
             ListeTache = new Dictionary<string, Taches>();
             ListeDonnées = new Dictionary<int, DonnéesGestionTaches>();
+
+            ListePersonne.Add("GL", new Personnes() { Code = "GL", Métier = new Metiers() { CodeMetier = CodeMetiers.ANA }, Nom = "LECLERQ", Prenom = "Geneviève" });
+            ListePersonne.Add("AF", new Personnes() { Code = "AF", Métier = new Metiers() { CodeMetier = CodeMetiers.ANA }, Nom = "FERRAND", Prenom = "Angèle" });
+            ListePersonne.Add("BN", new Personnes() { Code = "BN", Métier = new Metiers() { CodeMetier = CodeMetiers.CDP }, Nom = "NORMAND", Prenom = "Balthazar" });
+            ListePersonne.Add("RF", new Personnes() { Code = "RF", Métier = new Metiers() { CodeMetier = CodeMetiers.DEV }, Nom = "FISHER", Prenom = "Raymond" });
+            ListePersonne.Add("LB", new Personnes() { Code = "LB", Métier = new Metiers() { CodeMetier = CodeMetiers.DEV }, Nom = "BUTLER", Prenom = "Lucien" });
+            ListePersonne.Add("RB", new Personnes() { Code = "RB", Métier = new Metiers() { CodeMetier = CodeMetiers.DEV }, Nom = "BEAUMONT", Prenom = "Roseline" });
+            ListePersonne.Add("MW", new Personnes() { Code = "MW", Métier = new Metiers() { CodeMetier = CodeMetiers.DES }, Nom = "WEBER", Prenom = "Marguerite" });
+            ListePersonne.Add("HK", new Personnes() { Code = "HK", Métier = new Metiers() { CodeMetier = CodeMetiers.TES }, Nom = "KLEIN", Prenom = "Hilaire" });
+            ListePersonne.Add("NP", new Personnes() { Code = "NP", Métier = new Metiers() { CodeMetier = CodeMetiers.TES }, Nom = "PALMER", Prenom = "Nino" });
+
         }
         #endregion
 
@@ -42,11 +53,11 @@ namespace ConsoleApplication1
                     var tab = ligne.Split('\t');
                     try
                     {
-                        var DonnéesGestionTache = new DonnéesGestionTaches                   
+                        var DonnéesGestionTache = new DonnéesGestionTaches
                         {
-                            NumTache = int.Parse(tab[0]),                                           
-                            Version = new Versions() {Numéro = tab[1]},                             //Nouvelle instance de Version renseignant le numéro                          
-                            Personne = new Personnes(code = tab[2]),                            //Nouvelle instance de Personne renseignant le champ Code
+                            NumTache = int.Parse(tab[0]),
+                            Version = new Versions() { Numéro = tab[1] },                             //Nouvelle instance de Version renseignant le numéro                          
+                            Personne = ListePersonne[tab[2]],       //new Personnes(code = tab[2]),                            //Nouvelle instance de Personne renseignant le champ Code
                             CodeActivité = (Activités) Enum.Parse(typeof(Activités), tab[3]),
                             Tache = new TachesProd()                                                //Nouvelle instance de Tache renseignant tous ces champs
                             {
