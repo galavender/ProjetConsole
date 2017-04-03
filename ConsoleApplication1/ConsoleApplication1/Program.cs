@@ -12,16 +12,16 @@ namespace ConsoleApplication1
         {
             var Genomica = new DAL();
             Genomica.ChargerDonnées();
-            SortedDictionary<string, Taches> ActivitéAnnexe = new SortedDictionary<string, Taches>();
-            //InitActivitésAnnexes(ref ActivitéAnnexe);
-            Console.WriteLine( Results.DuréeTravail(new Personnes() { Nom = "Geneviève", Prenom = "Leclerq", Code = "GL", Métier = new Metiers() { CodeMetier = CodeMetiers.ANA } },"2.00", Genomica));
+            SortedDictionary<string, Taches> ActiAne = new SortedDictionary<string, Taches>();
+            //InitActivitésAnnexes(ref ActiAne);
+            Console.WriteLine( Results.DuréeTravail(new Personnes() { Nom = "Geneviève", Prenom = "Leclerq", Code = "GL", Métier =  CodeMetiers.ANA } ,"2.00", Genomica));
             Console.WriteLine(Results.RetardVersion("1.00", Genomica));
             Console.WriteLine(Results.TotalTravailRéa("1.00", Genomica));
             Console.ReadKey();
         }
 
 
-        static void InitActivitésAnnexes(ref SortedDictionary<string, Taches> ActivitéAnnexe)
+        static void InitActivitésAnnexes(ref SortedDictionary<string, Taches> ActiAne)
         {
             bool PlusDActiAnn = false;
 
@@ -29,13 +29,13 @@ namespace ConsoleApplication1
 
             while (!PlusDActiAnn)
             {
-                Console.WriteLine("Veuillez saisir le code d'une activité annexe :");
+                Console.WriteLine("Bonjour, Veuillez saisir le code d'une activité annexe :");
                 string code = Console.ReadLine();
-                if (!ActivitéAnnexe.ContainsKey(code))
+                if (!ActiAne.ContainsKey(code))
                 {
                     Console.WriteLine("Veuillez saisir le nom de l'activité annexe correspondante:");
                     libellé = Console.ReadLine();
-                    ActivitéAnnexe.Add(code, new Taches { Libellé = libellé });
+                    ActiAne.Add(code, new Taches { Libellé = libellé });
                     }
                 else
                 {
@@ -47,7 +47,7 @@ namespace ConsoleApplication1
             }
 
             Console.Clear();
-            foreach (var a in ActivitéAnnexe)
+            foreach (var a in ActiAne)
             {
                 Console.WriteLine("Activité n°{0} : {1}", a.Key, a.Value.Libellé);
             }
