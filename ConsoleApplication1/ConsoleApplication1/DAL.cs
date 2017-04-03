@@ -32,12 +32,13 @@ namespace ConsoleApplication1
             using (StreamReader str = new StreamReader(chemin))
             {
                 string ligne;
-                while ((ligne = str.ReadLine()) != null)
+                while ((ligne = str.ReadLine()) != null) //Boucle tant qu'il y a des lignes à lire
                 {
                     compteur++;
                     var tab = ligne.Split('\t');
                     try
                     {
+                        //Initialise une instance de Personne
                         var Personne = new Personnes
                         {
                             Code = tab[0],
@@ -79,20 +80,21 @@ namespace ConsoleApplication1
             using (StreamReader str = new StreamReader(chemin))
             {
                 string ligne;
-                while ((ligne = str.ReadLine()) != null)
+                while ((ligne = str.ReadLine()) != null) //Boucle tant qu'il y a des lignes à lire
                 {
                     compteur++;
-                    if (compteur == 1) continue;
+                    if (compteur == 1) continue; //La première ligne n'est pas lu, elle sert de titre
                     var tab = ligne.Split('\t');
                     try
                     {
+                        //Initialise une instance de DonnéesGestionTaches
                         var DonnéesGestionTache = new DonnéesGestionTaches
                         {
                             NumTache = int.Parse(tab[0]),
-                            Version = new Versions() { Numéro = tab[1] },                             //Nouvelle instance de Version renseignant le numéro                          
-                            Personne = ListePersonne[tab[2]],       //new Personnes(code = tab[2]),                            //Nouvelle instance de Personne renseignant le champ Code
+                            Version = new Versions() { Numéro = tab[1] }, //Nouvelle instance de Version renseignant le numéro                          
+                            Personne = ListePersonne[tab[2]], //Nouvelle instance de Personne renseignant le champ Code
                             CodeActivité = (Activités)Enum.Parse(typeof(Activités), tab[3]),
-                            Tache = new TachesProd()                                                //Nouvelle instance de Tache renseignant tous ces champs
+                            Tache = new TachesProd() //Nouvelle instance de Tache renseignant tous ces champs
                             {
                                 Libellé = tab[4],
                                 DateDébut = DateTime.Parse(tab[5]),
@@ -103,7 +105,6 @@ namespace ConsoleApplication1
                         };
                         //Ajout de l'instance DonnéesGestionTaches à la collection de données
                         ListeDonnées.Add(compteur - 1, DonnéesGestionTache);
-                        //Répartition des données dans les différentes collections
                     }
                     catch (FormatException)
                     {
@@ -114,17 +115,17 @@ namespace ConsoleApplication1
             }
         }
         #endregion
-
     }
 
     public class DonnéesGestionTaches
     {
+        #region Propriété
         public int NumTache { get; set; }
         public Versions Version { get; set; }
         public Personnes Personne { get; set; }
         public Activités CodeActivité { get; set; }
         public TachesProd Tache { get; set; }
-
+        #endregion
     }
 
 }

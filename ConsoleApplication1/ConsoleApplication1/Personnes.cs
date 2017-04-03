@@ -8,8 +8,6 @@ namespace ConsoleApplication1
 {
     public class Personnes
     {
-
-       
         #region Propriété
         public String Code { get; set; }
         public String Nom { get; set; }

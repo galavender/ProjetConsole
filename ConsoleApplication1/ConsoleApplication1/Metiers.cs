@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
-
     [Flags]
-
     public enum Activités
     {
         Aucune = 0,
@@ -57,7 +55,5 @@ namespace ConsoleApplication1
         public CodeMetiers CodeMetier { get; set; }
         public LibelléMetiers LibelléMetier { get; set; }
         #endregion
-
-
     }
 }

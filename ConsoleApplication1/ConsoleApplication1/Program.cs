@@ -32,8 +32,6 @@ namespace ConsoleApplication1
                         Console.WriteLine("Ce n'est pas une action, appuyez sur une touche");
                         break;
                 }
-                
-
             }
 
             //Console.WriteLine(Results.DuréeTravail(new Personnes() { Nom = "Geneviève", Prenom = "Leclerq", Code = "GL", Métier =  CodeMetiers.ANA } ,"2.00", Genomica));
