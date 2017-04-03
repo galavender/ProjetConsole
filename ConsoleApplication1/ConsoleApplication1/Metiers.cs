@@ -56,5 +56,7 @@ namespace ConsoleApplication1
         public CodeMetiers CodeMetier { get; set; }
         public LibelléMetiers LibelléMetier { get; set; }
         #endregion
+
+
     }
 }
