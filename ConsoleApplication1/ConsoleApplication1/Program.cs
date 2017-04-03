@@ -32,7 +32,7 @@ namespace ConsoleApplication1
                 {
                     Console.WriteLine("Veuillez saisir le nom de l'activité annexe correspondante:");
                     libellé = Console.ReadLine();
-                    ActiAne.Add(code, new Taches { }
+                    ActiAne.Add(code, new Taches { Libellé = libellé });
                     }
                 else
                 {
@@ -46,7 +46,7 @@ namespace ConsoleApplication1
             Console.Clear();
             foreach (var a in ActiAne)
             {
-                Console.WriteLine("Activité n°{0} : {1}", a.Key, a.Value);
+                Console.WriteLine("Activité n°{0} : {1}", a.Key, a.Value.Libellé);
             }
 
         }
