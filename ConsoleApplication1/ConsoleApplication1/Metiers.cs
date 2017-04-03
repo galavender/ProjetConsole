@@ -24,6 +24,7 @@ namespace ConsoleApplication1
         TES = 512,
         GDP = 1024
     }
+    [Flags]
     public enum LibelléActivités
     {
         Aucune = 0,

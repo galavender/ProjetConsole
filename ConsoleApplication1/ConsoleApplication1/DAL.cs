@@ -10,7 +10,7 @@ namespace ConsoleApplication1
     public class DAL
     {
         #region Propriété
-        public Dictionary<string, Metiers> ListeMétier { get; set; }
+        public Dictionary<Activités, Metiers> ListeMétier { get; set; }
         public Dictionary<string, Personnes> ListePersonne { get; set; }
         public Dictionary<string, Taches> ListeTache { get; set; }
         public Dictionary<int, DonnéesGestionTaches> ListeDonnées { get; set; }
@@ -21,12 +21,12 @@ namespace ConsoleApplication1
         public DAL()
         {
             //Initialisation des dictionnaires
-            ListeMétier = new Dictionary<string, Metiers>();
+            ListeMétier = new Dictionary<Activités, Metiers>();
             ListePersonne = new Dictionary<string, Personnes>();
             ListeTache = new Dictionary<string, Taches>();
             ListeDonnées = new Dictionary<int, DonnéesGestionTaches>();
 
-            //Génération des instances personnes dans le dictionnaire associé
+            //Génération des instances personnes d'après fichier dans le dictionnaire associé
             string chemin = @"..\..\Personne.txt";
             int compteur = 0;
             using (StreamReader str = new StreamReader(chemin))
@@ -55,16 +55,19 @@ namespace ConsoleApplication1
                     }
                 }
             }
-            //ListePersonne.Add("GL", new Personnes() { Code = "GL", Métier = new Metiers() { CodeMetier = CodeMetiers.ANA }, Nom = "LECLERQ", Prenom = "Geneviève" });
-            //ListePersonne.Add("AF", new Personnes() { Code = "AF", Métier = new Metiers() { CodeMetier = CodeMetiers.ANA }, Nom = "FERRAND", Prenom = "Angèle" });
-            //ListePersonne.Add("BN", new Personnes() { Code = "BN", Métier = new Metiers() { CodeMetier = CodeMetiers.CDP }, Nom = "NORMAND", Prenom = "Balthazar" });
-            //ListePersonne.Add("RF", new Personnes() { Code = "RF", Métier = new Metiers() { CodeMetier = CodeMetiers.DEV }, Nom = "FISHER", Prenom = "Raymond" });
-            //ListePersonne.Add("LB", new Personnes() { Code = "LB", Métier = new Metiers() { CodeMetier = CodeMetiers.DEV }, Nom = "BUTLER", Prenom = "Lucien" });
-            //ListePersonne.Add("RB", new Personnes() { Code = "RB", Métier = new Metiers() { CodeMetier = CodeMetiers.DEV }, Nom = "BEAUMONT", Prenom = "Roseline" });
-            //ListePersonne.Add("MW", new Personnes() { Code = "MW", Métier = new Metiers() { CodeMetier = CodeMetiers.DES }, Nom = "WEBER", Prenom = "Marguerite" });
-            //ListePersonne.Add("HK", new Personnes() { Code = "HK", Métier = new Metiers() { CodeMetier = CodeMetiers.TES }, Nom = "KLEIN", Prenom = "Hilaire" });
-            //ListePersonne.Add("NP", new Personnes() { Code = "NP", Métier = new Metiers() { CodeMetier = CodeMetiers.TES }, Nom = "PALMER", Prenom = "Nino" });
 
+            //Initialisation des métiers et activités dans la liste Métier
+            ListeMétier.Add(Activités.DBE ,new Metiers { Activité = Activités.DBE, LibelléActivité = LibelléActivités.DéfinitionDesBesoins, CodeMetier = CodeMetiers.ANA, LibelléMetier = LibelléMetiers.Analyste });
+            ListeMétier.Add(Activités.ARF, new Metiers { Activité = Activités.ARF, LibelléActivité = LibelléActivités.ArchitectureFonctionnelle, CodeMetier = CodeMetiers.ANA | CodeMetiers.CDP, LibelléMetier = LibelléMetiers.Analyste | LibelléMetiers.ChefDeProjet });
+            ListeMétier.Add(Activités.ANF, new Metiers { Activité = Activités.ANF, LibelléActivité = LibelléActivités.AnalyseFonctionnelle, CodeMetier = CodeMetiers.ANA | CodeMetiers.CDP | CodeMetiers.DEV |CodeMetiers.DES, LibelléMetier = LibelléMetiers.Analyste | LibelléMetiers.ChefDeProjet |LibelléMetiers.Développeur|LibelléMetiers.Designer});
+            ListeMétier.Add(Activités.DES, new Metiers { Activité = Activités.DES, LibelléActivité = LibelléActivités.Design, CodeMetier = CodeMetiers.DES, LibelléMetier = LibelléMetiers.Designer });
+            ListeMétier.Add(Activités.INF, new Metiers { Activité = Activités.INF, LibelléActivité = LibelléActivités.Infographie, CodeMetier = CodeMetiers.DES, LibelléMetier = LibelléMetiers.Designer });
+            ListeMétier.Add(Activités.ART, new Metiers { Activité = Activités.ART, LibelléActivité = LibelléActivités.ArchitectureTechnique, CodeMetier = CodeMetiers.CDP|CodeMetiers.DEV, LibelléMetier = LibelléMetiers.ChefDeProjet|LibelléMetiers.Développeur});
+            ListeMétier.Add(Activités.ANT, new Metiers { Activité = Activités.ANT, LibelléActivité = LibelléActivités.AnalyseTechnique, CodeMetier = CodeMetiers.DEV, LibelléMetier = LibelléMetiers.Développeur });
+            ListeMétier.Add(Activités.DEV, new Metiers { Activité = Activités.DEV, LibelléActivité = LibelléActivités.Développement, CodeMetier = CodeMetiers.DEV, LibelléMetier = LibelléMetiers.Développeur });
+            ListeMétier.Add(Activités.RPT, new Metiers { Activité = Activités.RPT, LibelléActivité = LibelléActivités.RédactionDePlanDeTest, CodeMetier = CodeMetiers.TES, LibelléMetier = LibelléMetiers.Testeur });
+            ListeMétier.Add(Activités.TES, new Metiers { Activité = Activités.TES, LibelléActivité = LibelléActivités.Test, CodeMetier = CodeMetiers.TES|CodeMetiers.DEV, LibelléMetier = LibelléMetiers.Testeur|LibelléMetiers.Développeur });
+            ListeMétier.Add(Activités.GDP, new Metiers { Activité = Activités.GDP, LibelléActivité = LibelléActivités.GestionDeProjet, CodeMetier = CodeMetiers.CDP, LibelléMetier = LibelléMetiers.ChefDeProjet });
         }
         #endregion
 
