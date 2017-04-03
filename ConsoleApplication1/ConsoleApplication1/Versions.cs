@@ -8,11 +8,10 @@ namespace ConsoleApplication1
 {
     public class Versions
     {
-        #region Propriété
         public DateTime DateDebut { get; set; }
         public DateTime DatePubli { get; set; }
         public int Millésime { get; set; }
-        public int Numéro { get; set; }
-        #endregion
+        public string Numéro { get; set; }
+
     }
 }

@@ -1,0 +1,145 @@
+NumTache	Version	Personne	Activité	LibTache	DateDeb	Prevu	Realise	Restant
+1	1.00	GL	DBE	GL - Besoin 1	02/01/2016	14	15	0
+2	1.00	GL	DBE	GL - Besoin 2	04/02/2016	16	19	0
+3	1.00	GL	DBE	GL - Besoin 3	06/03/2016	18	16	0
+4	1.00	GL	DBE	GL - Besoin 4	08/04/2016	13	12	0
+5	1.00	GL	ARF	GL - Archi fonctionnelle 1	10/05/2016	14	18	0
+6	1.00	GL	ARF	GL - Archi fonctionnelle 2	12/06/2016	15	19	0
+7	1.00	GL	ANF	GL - Analyse fonctionnelle 1	14/07/2016	16	12	0
+8	1.00	GL	ANF	GL - Analyse fonctionnelle 2	16/08/2016	17	20	0
+9	1.00	GL	ANF	GL - Analyse fonctionnelle 3	18/09/2016	18	21	0
+10	1.00	GL	ANF	GL - Analyse fonctionnelle 4	20/10/2016	14	11	0
+11	1.00	GL	ANF	GL - Analyse fonctionnelle 5	22/11/2016	16	15	0
+12	1.00	GL	ANF	GL - Analyse fonctionnelle 6	24/12/2016	18	18	0
+13	1.00	AF	DBE	AF - Besoin 1	05/01/2016	15	14	0
+14	1.00	AF	DBE	AF - Besoin 2	07/02/2016	19	19	0
+15	1.00	AF	DBE	AF - Besoin 3	09/03/2016	16	18	0
+16	1.00	AF	DBE	AF - Besoin 4	11/04/2016	12	13	0
+17	1.00	AF	ARF	AF - Archi fonctionnelle 1	13/05/2016	18	18	0
+18	1.00	AF	ARF	AF - Archi fonctionnelle 2	15/06/2016	19	15	0
+19	1.00	AF	ANF	AF - Analyse fonctionnelle 1	17/07/2016	12	13	0
+20	1.00	AF	ANF	AF - Analyse fonctionnelle 2	19/08/2016	20	20	0
+21	1.00	AF	ANF	AF - Analyse fonctionnelle 3	21/09/2016	21	18	0
+22	1.00	AF	ANF	AF - Analyse fonctionnelle 4	23/10/2016	11	13	0
+23	1.00	AF	ANF	AF - Analyse fonctionnelle 5	25/11/2016	15	16	0
+24	1.00	AF	ANF	AF - Analyse fonctionnelle 6	27/12/2016	18	17	0
+25	1.00	BN	ARF	BN - Archi fonctionnelle 1	07/01/2016	9	9	0
+26	1.00	BN	ANF	BN - Analyse fonctionnelle 1	09/02/2016	11	13	0
+27	1.00	BN	ANF	BN - Archi fonctionnelle 2	11/03/2016	15	11	0
+28	1.00	BN	ART	BN - Archi technique 1	13/04/2016	12	12	0
+29	1.00	BN	ART	BN - Archi technique 2	15/05/2016	14	13	0
+30	1.00	BN	ART	BN - Archi technique 3	17/06/2016	13	14	0
+31	1.00	BN	TES	BN - Test	19/07/2016	11	12	0
+32	1.00	BN	GDP	BN - Gestion de projet 1	21/08/2016	10	15	0
+33	1.00	BN	GDP	BN - Gestion de projet 2	23/09/2016	9	7	0
+34	1.00	BN	GDP	BN - Gestion de projet 3	25/10/2016	14	11	0
+35	1.00	BN	GDP	BN - Gestion de projet 4	27/11/2016	8	11	0
+36	1.00	BN	GDP	BN - Gestion de projet 5	29/12/2016	8	10	0
+37	1.00	RF	ANF	RF - Analyse fonctionnelle	02/01/2016	14	15	0
+38	1.00	RF	ART	RF - Archi technique 	04/02/2016	18	19	0
+39	1.00	RF	ANT	RF - Analyse technique 1	06/03/2016	16	16	0
+40	1.00	RF	ANT	RF - Analyse technique 2	08/04/2016	11	12	0
+41	1.00	RF	ANT	RF - Analyse technique 3	10/05/2016	15	18	0
+42	1.00	RF	ANT	RF - Analyse technique 4	12/06/2016	20	19	0
+43	1.00	RF	DEV	RF - Développement 1	14/07/2016	19	16	0
+44	1.00	RF	DEV	RF - Développement 2	16/08/2016	15	14	0
+45	1.00	RF	DEV	RF - Développement 3	18/09/2016	18	18	0
+46	1.00	RF	DEV	RF - Développement 4	20/10/2016	17	18	0
+47	1.00	RF	DEV	RF - Développement 5	22/11/2016	18	19	0
+48	1.00	RF	TES	RF - Test	24/12/2016	12	12	0
+49	1.00	LB	ANF	LB - Analyse fonctionnelle	05/01/2016	15	15	0
+50	1.00	LB	ART	LB - Archi technique 	07/02/2016	19	17	0
+51	1.00	LB	ANT	LB - Analyse technique 1	09/03/2016	16	14	0
+52	1.00	LB	ANT	LB - Analyse technique 2	11/04/2016	12	11	0
+53	1.00	LB	ANT	LB - Analyse technique 3	13/05/2016	15	16	0
+54	1.00	LB	ANT	LB - Analyse technique 4	15/06/2016	21	18	0
+55	1.00	LB	DEV	LB - Développement 1	17/07/2016	19	17	0
+56	1.00	LB	DEV	LB - Développement 2	19/08/2016	13	14	0
+57	1.00	LB	DEV	LB - Développement 3	21/09/2016	19	18	0
+58	1.00	LB	DEV	LB - Développement 4	23/10/2016	17	17	0
+59	1.00	LB	DEV	LB - Développement 5	25/11/2016	18	17	0
+60	1.00	LB	TES	LB - Test	27/12/2016	12	12	0
+61	1.00	RB	ANF	RB - Analyse fonctionnelle	07/01/2016	14	13	0
+62	1.00	RB	ART	RB - Archi technique 	09/02/2016	18	20	0
+63	1.00	RB	ANT	RB - Analyse technique 1	11/03/2016	16	17	0
+64	1.00	RB	ANT	RB - Analyse technique 2	13/04/2016	11	10	0
+65	1.00	RB	ANT	RB - Analyse technique 3	15/05/2016	15	13	0
+66	1.00	RB	ANT	RB - Analyse technique 4	17/06/2016	20	20	0
+67	1.00	RB	DEV	RB - Développement 1	19/07/2016	19	21	0
+68	1.00	RB	DEV	RB - Développement 2	21/08/2016	15	17	0
+69	1.00	RB	DEV	RB - Développement 3	23/09/2016	18	18	0
+70	1.00	RB	DEV	RB - Développement 4	25/10/2016	17	16	0
+71	1.00	RB	DEV	RB - Développement 5	27/11/2016	18	19	0
+72	1.00	RB	TES	RB - Test	29/12/2016	12	13	0
+73	1.00	MW	ANF	MW - Analyse fonctionnelle 1	02/01/2016	14	15	0
+74	1.00	MW	ANF	MW - Analyse fonctionnelle 2	04/02/2016	18	19	0
+75	1.00	MW	DES	MW - Design 1	06/03/2016	16	16	0
+76	1.00	MW	DES	MW - Design 2	08/04/2016	11	12	0
+77	1.00	MW	DES	MW - Design 3	10/05/2016	15	18	0
+78	1.00	MW	DES	MW - Design 4	12/06/2016	20	19	0
+79	1.00	MW	DES	MW - Design 5	14/07/2016	19	16	0
+80	1.00	MW	INF	MW - Infographie 1	16/08/2016	15	14	0
+81	1.00	MW	INF	MW - Infographie 2	18/09/2016	18	18	0
+82	1.00	MW	INF	MW - Infographie 3	20/10/2016	17	18	0
+83	1.00	MW	INF	MW - Infographie 4	22/11/2016	18	19	0
+84	1.00	MW	INF	MW - Infographie 5	24/12/2016	12	12	0
+85	1.00	HK	RPT	HK - Rédaction plan de test 1	05/01/2016	15	15	0
+86	1.00	HK	RPT	HK - Rédaction plan de test 2	07/02/2016	19	17	0
+87	1.00	HK	RPT	HK - Rédaction plan de test 3	09/03/2016	16	14	0
+88	1.00	HK	RPT	HK - Rédaction plan de test 4	11/04/2016	12	11	0
+89	1.00	HK	RPT	HK - Rédaction plan de test 5	13/05/2016	15	16	0
+90	1.00	HK	RPT	HK - Rédaction plan de test 6	15/06/2016	21	18	0
+91	1.00	HK	TES	HK - Test 1	17/07/2016	19	17	0
+92	1.00	HK	TES	HK - Test 2	19/08/2016	13	14	0
+93	1.00	HK	TES	HK - Test 3	21/09/2016	19	18	0
+94	1.00	HK	TES	HK - Test 4	23/10/2016	17	17	0
+95	1.00	HK	TES	HK - Test 5	25/11/2016	18	17	0
+96	1.00	HK	TES	HK - Test 6	27/12/2016	12	12	0
+97	1.00	NP	RPT	RB NP - Rédaction plan de test 1	07/01/2016	14	13	0
+98	1.00	NP	RPT	RB NP - Rédaction plan de test 2	09/02/2016	18	20	0
+99	1.00	NP	RPT	RB NP - Rédaction plan de test 3	11/03/2016	16	17	0
+100	1.00	NP	RPT	RB NP - Rédaction plan de test 4	13/04/2016	11	10	0
+101	1.00	NP	RPT	RB NP - Rédaction plan de test 5	15/05/2016	15	13	0
+102	1.00	NP	RPT	RB NP - Rédaction plan de test 6	17/06/2016	20	20	0
+103	1.00	NP	TES	RB NP - Test 1	19/07/2016	19	21	0
+104	1.00	NP	TES	RB NP - Test 2	21/08/2016	15	17	0
+105	1.00	NP	TES	RB NP - Test 3	23/09/2016	18	18	0
+106	1.00	NP	TES	RB NP - Test 4	25/10/2016	17	16	0
+107	1.00	NP	TES	RB NP - Test 5	27/11/2016	18	19	0
+108	1.00	NP	TES	RB NP - Test 6	29/12/2016	12	13	0
+109	2.00	GL	DBE	GL - Définition besoin	03/01/2017	17	18	0
+110	2.00	GL	ARF	GL - Architecture fonctionnelle	05/02/2017	18	16	4
+111	2.00	GL	ANF	GL - Analyse fonctionnelle 1	07/03/2017	21	19	2
+112	2.00	GL	ANF	GL - Analyse fonctionnelle 2	09/04/2017	20	5	15
+113	2.00	AF	DBE	AF - Définition besoin	04/01/2017	19	18	2
+114	2.00	AF	ARF	AF - Architecture fonctionnelle	06/02/2017	17	16	0
+115	2.00	AF	ANF	AF - Analyse fonctionnelle 1	08/03/2017	23	19	5
+116	2.00	AF	ANF	AF - Analyse fonctionnelle 2	10/04/2017	22	7	15
+117	2.00	BN	ARF	BN - Archi fonctionnelle	03/01/2017	11	11	0
+118	2.00	BN	ANF	BN - Analyse fonctionnelle	05/02/2017	13	11	2
+119	2.00	BN	ART	BN - Archi technique	07/03/2017	12	8	4
+120	2.00	BN	GDP	BN - Gestion de projet	09/04/2017	14	9	5
+121	2.00	RF	ANT	RF - Analyse technique 1	03/01/2017	17	17	1
+122	2.00	RF	ANT	RF - Analyse technique 2	05/02/2017	19	16	3
+123	2.00	RF	DEV	RF - Dev 1	07/03/2017	20	20	0
+124	2.00	RF	DEV	RF - Dev 2	09/04/2017	22	2	20
+125	2.00	LB	ANF	LB - Analyse fonctionnelle 1	04/01/2017	18	18	0
+126	2.00	LB	ANF	LB - Analyse fonctionnelle 2	06/02/2017	16	16	0
+127	2.00	LB	ANT	LB - Analyse technique 1	08/03/2017	19	19	0
+128	2.00	LB	ANT	LB - Analyse technique 2	10/04/2017	16	16	0
+129	2.00	RB	DEV	RB - Dev 1	05/01/2017	14	15	0
+130	2.00	RB	DEV	RB - Dev 2	07/02/2017	17	17	0
+131	2.00	RB	DEV	RB - Dev 3	09/03/2017	19	14	7
+132	2.00	RB	DEV	RB - Dev 4	11/04/2017	20	3	18
+133	2.00	MW	DES	MW - Design 1	03/01/2017	19	15	4
+134	2.00	MW	DES	MW - Design 2	05/02/2017	17	15	3
+135	2.00	MW	INF	MW - Infographie 1	07/03/2017	23	24	0
+136	2.00	MW	INF	MW - Infographie 2	09/04/2017	22	18	4
+137	2.00	HK	RPT	HK - Rédaction plan de test 1	04/01/2017	16	16	0
+138	2.00	HK	RPT	HK - Rédaction plan de test 2	06/02/2017	19	17	3
+139	2.00	HK	TES	HK - Test 1	08/03/2017	16	14	0
+140	2.00	HK	TES	HK - Test 2	10/04/2017	14	9	2
+141	2.00	NP	RPT	NP - Rédaction plan de test 1	05/01/2017	16	15	0
+142	2.00	NP	RPT	NP - Rédaction plan de test 2	07/02/2017	14	13	0
+143	2.00	NP	TES	NP - Test 1	09/03/2017	17	14	5
+144	2.00	NP	TES	NP - Test 2	11/04/2017	19	9	9
