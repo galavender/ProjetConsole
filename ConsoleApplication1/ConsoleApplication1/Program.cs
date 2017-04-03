@@ -10,6 +10,8 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
+            var Genomica = new DAL();
+            Genomica.ChargerDonnées();
             SortedDictionary<string, Taches> ActiAne = new SortedDictionary<string, Taches>();
             InitActivitésAnnexes(ref ActiAne);
             Console.ReadKey();
