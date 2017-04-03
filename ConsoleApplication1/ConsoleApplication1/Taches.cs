@@ -25,7 +25,7 @@ namespace ConsoleApplication1
     {
         #region Propriétés
         public int ActivitéAnne { get; set; }
-        public int CumulTempsPassé { get; set; }
+        public int CumulTempsPassé { get; set; } = 0;
         #endregion
     }
 }
