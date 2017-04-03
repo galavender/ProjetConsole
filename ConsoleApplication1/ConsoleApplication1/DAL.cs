@@ -78,7 +78,7 @@ namespace ConsoleApplication1
         public Versions Version { get; set; } 
         public Personnes Personne { get; set; }
         public Activités CodeActivité { get; set; }
-        public Taches Tache { get; set; }
+        public TachesProd Tache { get; set; }
 
     }
 

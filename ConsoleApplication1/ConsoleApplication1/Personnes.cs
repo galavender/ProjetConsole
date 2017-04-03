@@ -8,6 +8,12 @@ namespace ConsoleApplication1
 {
     public class Personnes
     {
+
+        public Personnes(string code)
+        {
+            Code = code;
+
+        }
         #region Propriété
         public String Code { get; set; }
         public String Nom { get; set; }

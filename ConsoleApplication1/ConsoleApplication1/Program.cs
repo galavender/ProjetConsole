@@ -14,6 +14,8 @@ namespace ConsoleApplication1
             Genomica.ChargerDonnées();
             SortedDictionary<string, Taches> ActiAne = new SortedDictionary<string, Taches>();
             InitActivitésAnnexes(ref ActiAne);
+            Results.DuréeTravail("")
+
             Console.ReadKey();
         }
 
