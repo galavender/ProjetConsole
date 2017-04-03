@@ -20,7 +20,7 @@ namespace ConsoleApplication1
         ART = 32,
         ANT = 64,
         DEV = 128,
-        RTP = 256,
+        RPT = 256,
         TES = 512,
         GDP = 1024
     }

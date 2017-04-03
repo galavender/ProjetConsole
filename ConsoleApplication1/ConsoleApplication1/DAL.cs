@@ -19,7 +19,7 @@ namespace ConsoleApplication1
         #region Méthode
         public void ChargerDonnées()
         {
-            string chemin = @"..\..\Données.xlsx";  
+            string chemin = @"..\..\Données.txt";  
             int compteur = 0;
             using (StreamReader str = new StreamReader(chemin)) 
             {
@@ -27,14 +27,14 @@ namespace ConsoleApplication1
                 while ((ligne = str.ReadLine()) != null)
                 {
                     compteur++;
-                    if (compteur < 2) continue;
+                    if (compteur ==1) continue;
                     var tab = ligne.Split('\t');
                     try
                     {
                         var DonnéesGestionTache = new DonnéesGestionTaches                   
                         {
                             NumTache = int.Parse(tab[0]),                                           
-                            Version = tab[1],   //A modifier                            
+                            Version = new Versions() {Numéro = tab[1]},              //Nouvelle instance de Version renseignant le numéro                          
                             Personne = new Personnes() { Code = tab[2]},                        //Nouvelle instance de Personne renseignant le champ Code
                             CodeActivité = (Activités) Enum.Parse(typeof(Activités), tab[3]),
                             Tache = new TachesProd()                                            //Nouvelle instance de Tache renseignant tous ces champs
@@ -49,7 +49,7 @@ namespace ConsoleApplication1
                     }
                     catch (FormatException)
                     {
-                        throw new FormatException();
+                        throw new FormatException("Une erreur de format a été identifié dans le fichier de données");
                     }
                 }
             }
@@ -61,7 +61,7 @@ namespace ConsoleApplication1
     public class DonnéesGestionTaches
     {
         public int NumTache { get; set; }
-        public Object Version { get; set; } //A modifier avec la classe Version
+        public Versions Version { get; set; } 
         public Personnes Personne { get; set; }
         public Activités CodeActivité { get; set; }
         public Taches Tache { get; set; }
