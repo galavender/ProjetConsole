@@ -20,7 +20,7 @@ namespace ConsoleApplication1
         ART = 32,
         ANT = 64,
         DEV = 128,
-        RTP = 256,
+        RPT = 256,
         TES = 512,
         GDP = 1024
     }
@@ -39,7 +39,6 @@ namespace ConsoleApplication1
         Test = 512,
         GestionDeProjet = 1024
     }
-
     public enum CodeMetiers
     {
         ANA, CDP, DEV, DES, TES
@@ -49,14 +48,13 @@ namespace ConsoleApplication1
         Analyste, ChefDeProjet, Développeur, Designer, Testeur
     }
 
-
-
     public class Metiers
     {
+        #region Propriété
         public Activités Activité { get; set; }
         public LibelléActivités LibelléActivité { get; set; }
         public CodeMetiers CodeMetier { get; set; }
         public LibelléMetiers LibelléMetier { get; set; }
-
+        #endregion
     }
 }
