@@ -10,7 +10,44 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
+            SortedDictionary<string, Taches> ActiAne = new SortedDictionary<string, Taches>();
+            InitActivitésAnnexes(ref ActiAne);
+            Console.ReadKey();
+        }
+
+
+        static void InitActivitésAnnexes(ref SortedDictionary<string, Taches> ActiAne)
+        {
+            bool PlusDActiAnn = false;
+
+            string libellé = string.Empty;
+
+            while (!PlusDActiAnn)
+            {
+                Console.WriteLine("Bonjour, Veuillez saisir le code d'une activité annexe :");
+                string code = Console.ReadLine();
+                if (!ActiAne.ContainsKey(code))
+                {
+                    Console.WriteLine("Veuillez saisir le nom de l'activité annexe correspondante:");
+                    libellé = Console.ReadLine();
+                    ActiAne.Add(code, new Taches { }
+                    }
+                else
+                {
+                    Console.WriteLine("Ce code existe déjà, veuillez saisir un code différent");
+                }
+                Console.WriteLine("Voulez-vous saisir une autre activité annexe ? o/n");
+                if (Console.ReadLine() == "n")
+                    PlusDActiAnn = true;
+            }
+
+            Console.Clear();
+            foreach (var a in ActiAne)
+            {
+                Console.WriteLine("Activité n°{0} : {1}", a.Key, a.Value);
+            }
 
         }
+
     }
 }
