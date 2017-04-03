@@ -31,7 +31,7 @@ namespace ConsoleApplication1
             var activité = dal.ListeDonnées.Select(u => u.Value.CodeActivité).Distinct();
             foreach (var d in activité)
             {
-                var totalJourTravaillé = dal.ListeDonnées.Where(y => y.Value.Version.Numéro == "1.00").Where(c => c.Value.CodeActivité == d).Sum(g => g.Value.Tache.DuréeRéalisée);
+                var totalJourTravaillé = dal.ListeDonnées.Where(y => y.Value.Version.Numéro == version).Where(c => c.Value.CodeActivité == d).Sum(g => g.Value.Tache.DuréeRéalisée);
                 jourTravaillé += string.Format("{0} : {1}j\n",d, totalJourTravaillé);
             }
             return jourTravaillé;
