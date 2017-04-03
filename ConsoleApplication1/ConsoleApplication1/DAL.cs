@@ -13,7 +13,18 @@ namespace ConsoleApplication1
         public Dictionary<int, Metiers> ListeMétier { get; set; }
         public Dictionary<int, Personnes> ListePersonne { get; set; }
         public Dictionary<int, Taches> ListeTache { get; set; }
-        public object Logiciel { get; set; }    //A modifier avec la classe logiciel
+        public Dictionary<int, DonnéesGestionTaches> ListeDonnées { get; set; }
+        public Logiciels Logiciel { get; set; }
+        #endregion
+
+        #region Constructeur
+        public DAL()
+        {
+            ListeMétier = new Dictionary<int, Metiers>();
+            ListePersonne = new Dictionary<int, Personnes>();
+            ListeTache = new Dictionary<int, Taches>();
+            ListeDonnées = new Dictionary<int, DonnéesGestionTaches>();
+        }
         #endregion
 
         #region Méthode
@@ -34,10 +45,10 @@ namespace ConsoleApplication1
                         var DonnéesGestionTache = new DonnéesGestionTaches                   
                         {
                             NumTache = int.Parse(tab[0]),                                           
-                            Version = new Versions() {Numéro = tab[1]},              //Nouvelle instance de Version renseignant le numéro                          
-                            Personne = new Personnes() { Code = tab[2]},                        //Nouvelle instance de Personne renseignant le champ Code
+                            Version = new Versions() {Numéro = tab[1]},                             //Nouvelle instance de Version renseignant le numéro                          
+                            Personne = new Personnes() { Code = tab[2]},                            //Nouvelle instance de Personne renseignant le champ Code
                             CodeActivité = (Activités) Enum.Parse(typeof(Activités), tab[3]),
-                            Tache = new TachesProd()                                            //Nouvelle instance de Tache renseignant tous ces champs
+                            Tache = new TachesProd()                                                //Nouvelle instance de Tache renseignant tous ces champs
                             {
                                 Libellé = tab[4],
                                 DateDébut = DateTime.Parse(tab[5]),
@@ -45,7 +56,10 @@ namespace ConsoleApplication1
                                 DuréeRéalisée = int.Parse(tab[7]),
                                 DuréeRestante = int.Parse(tab[8])
                             }
+
+
                         };
+                        ListeDonnées.Add(compteur - 1, DonnéesGestionTache);
                     }
                     catch (FormatException)
                     {
