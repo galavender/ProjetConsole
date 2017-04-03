@@ -25,5 +25,13 @@ namespace ConsoleApplication1
                 return string.Format("Sur la version {0}, la durée de travail prévue a dépassé de {1}j la durée réalisée, ce qui reprèsente un pourcentage proche de {2}", version, d - d2, (100 * d2) / d);
         }
 
+        public static string TotalTravailRéa(string version, DAL dal)
+        {
+            foreach ( var d in dal.ListeDonnées.Select(a => a.Value.Tache.Libellé))
+            {
+                var 
+            }
+            var d = dal.ListeDonnées.Where(a => a.Value.Tache.Libellé)
+        }
     }
 }
