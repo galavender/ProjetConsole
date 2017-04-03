@@ -10,9 +10,9 @@ namespace ConsoleApplication1
     public class DAL
     {
         #region Propriété
-        public Dictionary<int, Metiers> ListeMétier { get; set; }
-        public Dictionary<int, Personnes> ListePersonne { get; set; }
-        public Dictionary<int, Taches> ListeTache { get; set; }
+        public Dictionary<string, Metiers> ListeMétier { get; set; }
+        public Dictionary<string, Personnes> ListePersonne { get; set; }
+        public Dictionary<string, Taches> ListeTache { get; set; }
         public Dictionary<int, DonnéesGestionTaches> ListeDonnées { get; set; }
         public Logiciels Logiciel { get; set; }
         #endregion
@@ -20,9 +20,9 @@ namespace ConsoleApplication1
         #region Constructeur
         public DAL()
         {
-            ListeMétier = new Dictionary<int, Metiers>();
-            ListePersonne = new Dictionary<int, Personnes>();
-            ListeTache = new Dictionary<int, Taches>();
+            ListeMétier = new Dictionary<string, Metiers>();
+            ListePersonne = new Dictionary<string, Personnes>();
+            ListeTache = new Dictionary<string, Taches>();
             ListeDonnées = new Dictionary<int, DonnéesGestionTaches>();
         }
         #endregion
@@ -56,14 +56,15 @@ namespace ConsoleApplication1
                                 DuréeRéalisée = int.Parse(tab[7]),
                                 DuréeRestante = int.Parse(tab[8])
                             }
-
-
                         };
+                        //Ajout de l'instance DonnéesGestionTaches à la collection de données
                         ListeDonnées.Add(compteur - 1, DonnéesGestionTache);
+                        //Répartition des données dans les différentes collections
                     }
                     catch (FormatException)
                     {
-                        throw new FormatException("Une erreur de format a été identifié dans le fichier de données");
+                        //Lève une exception si le format des données du fichier n'est pas bon.
+                        throw new FormatException("Une erreur de format a été identifié dans le fichier de données à la ligne");
                     }
                 }
             }
