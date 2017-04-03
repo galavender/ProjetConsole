@@ -46,7 +46,7 @@ namespace ConsoleApplication1
                         {
                             NumTache = int.Parse(tab[0]),                                           
                             Version = new Versions() {Numéro = tab[1]},                             //Nouvelle instance de Version renseignant le numéro                          
-                            Personne = new Personnes() { Code = tab[2]},                            //Nouvelle instance de Personne renseignant le champ Code
+                            Personne = new Personnes(code = tab[2]),                            //Nouvelle instance de Personne renseignant le champ Code
                             CodeActivité = (Activités) Enum.Parse(typeof(Activités), tab[3]),
                             Tache = new TachesProd()                                                //Nouvelle instance de Tache renseignant tous ces champs
                             {
