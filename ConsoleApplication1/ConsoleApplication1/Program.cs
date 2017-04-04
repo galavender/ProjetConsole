@@ -27,7 +27,7 @@ namespace ConsoleApplication1
                 switch (Console.ReadLine())
                 {
                     case "r":
-                        resultat(Genomica);
+                        resultat(Genomica, listePersonne);
                         break;
                     case "a":
                         InitActivitésAnnexes(ref ActiAne);
@@ -111,25 +111,63 @@ namespace ConsoleApplication1
         }
 
 
-        static void resultat(DAL Genomica)
+        static void resultat(DAL Genomica, Dictionary<string, Personnes> listePersonne)
         {
+            bool verif = false;
             Console.WriteLine("Quel resultat voulez-vous ?\n p : durées de travail réalisée et restante d’une personne sur une version\n n : nombre de jours et le pourcentage d’avance ou de retard sur une version \n d : durées totales de travail réalisées sur la production d’une version, pour chaque activité");
             switch (Console.ReadLine())
             {
-                case "d":
-                    Console.WriteLine("Sur quelle version");
-                    Console.WriteLine(Results.TotalTravailRéa(Console.ReadLine(), Genomica));
+                case "d":               
+                    while (!verif)
+                    {
+                        Console.WriteLine("Sur quelle version");
+                        string version = Console.ReadLine();
+                        if (version == "1.00" || version == "2.00")
+                        {
+                            Console.WriteLine(Results.TotalTravailRéa(version, Genomica));
+                            verif = true;
+                        }
+                        else
+                            Console.WriteLine("Cette version n'existe pas");
+                    }
                     break;
                 case "n":
-                    Console.WriteLine("Sur quelle version");
-                    Console.WriteLine(Results.RetardVersion(Console.ReadLine(), Genomica));
+                    while (!verif)
+                    {
+                        Console.WriteLine("Sur quelle version");
+                        string version = Console.ReadLine();
+                        if (version == "1.00" || version == "2.00")
+                        {
+                            Console.WriteLine(Results.RetardVersion(version, Genomica));
+                            verif = true;
+                        }
+                        else
+                            Console.WriteLine("Cette version n'existe pas");
+                    }
                     break;
                 case "p":
-                    Console.WriteLine("Quelles sont les initiales de la personne?");
-                    string initial = Console.ReadLine().ToUpper();
-                    Console.WriteLine("Sur quelle version");
-
-                    Console.WriteLine(Results.DuréeTravail(new Personnes() { Nom = "Geneviève", Prenom = "Leclerq", Code = "GL", Métier = CodeMetiers.ANA }, Console.ReadLine(), Genomica));
+                    while (!verif)
+                    {
+                        Console.WriteLine("Quelles sont les initiales de la personne?");
+                        string initial = Console.ReadLine().ToUpper();
+                        if (listePersonne.ContainsKey(initial))
+                        {
+                            while (!verif)
+                            {
+                                Console.WriteLine("Sur quelle version");
+                                string version = Console.ReadLine();
+                                if (version == "1.00" || version == "2.00")
+                                {
+                                    Console.WriteLine(Results.DuréeTravail(new Personnes() { Nom = listePersonne[initial].Nom, Prenom = listePersonne[initial].Prenom, Code = initial, Métier = listePersonne[initial].Métier }, version, Genomica));
+                                    verif = true;
+                                }
+                                else
+                                    Console.WriteLine("Cette version n'existe pas");
+                            }
+                        }
+                        else
+                            Console.WriteLine("Cette personne n'est pas dans la base de données");
+                    }
                     break;
                 default:
                     break;
