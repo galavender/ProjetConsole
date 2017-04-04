@@ -78,7 +78,7 @@ namespace JobOverview
                     catch (FormatException)
                     {
                         //Lève une exception si le format des données du fichier n'est pas bon.
-                        throw new FormatException("Une erreur de format a été identifié dans le fichier de données à la ligne");
+                        throw new FormatException("\bUne erreur de format a été identifié dans le fichier de données à la ligne");
                     }
                 }
             }
@@ -92,19 +92,19 @@ namespace JobOverview
 
             while (!PlusDActiAnn)
             {
-                Console.WriteLine("Veuillez saisir le code d'une activité annexe :");
+                Console.WriteLine("\bVeuillez saisir le code d'une activité annexe :");
                 string code = Console.ReadLine();
                 if (!ActiAne.ContainsKey(code))
                 {
-                    Console.WriteLine("Veuillez saisir le nom de l'activité annexe correspondante:");
+                    Console.WriteLine("\bVeuillez saisir le nom de l'activité annexe correspondante:");
                     libellé = Console.ReadLine();
                     ActiAne.Add(code, new Taches { Libellé = libellé });                //Ajout de l'activité dans le dictionnaire
                 }
                 else
                 {
-                    Console.WriteLine("Ce code existe déjà, veuillez saisir un code différent");
+                    Console.WriteLine("\bCe code existe déjà, veuillez saisir un code différent");
                 }
-                Console.WriteLine("Voulez-vous saisir une autre activité annexe ? o/n");
+                Console.WriteLine("\bVoulez-vous saisir une autre activité annexe ? o/n");
                 if (Console.ReadKey().Key == ConsoleKey.N)
                     PlusDActiAnn = true;
             }
@@ -112,7 +112,7 @@ namespace JobOverview
             Console.Clear();
             foreach (var a in ActiAne)                                                  //Affichage des activités annexes triées par code
             {
-                Console.WriteLine("Activité n°{0} : {1}", a.Key, a.Value.Libellé);
+                Console.WriteLine("\bActivité n°{0} : {1}", a.Key, a.Value.Libellé);
             }
 
         }
@@ -121,13 +121,13 @@ namespace JobOverview
         static void resultat(DAL Genomica, Dictionary<string, Personnes> listePersonne)
         {
             bool verif = false;
-            Console.WriteLine("Quel resultat voulez-vous ?\n p : durées de travail réalisée et restante d’une personne sur une version\n n : nombre de jours et le pourcentage d’avance ou de retard sur une version \n d : durées totales de travail réalisées sur la production d’une version, pour chaque activité");
+            Console.WriteLine("\bQuel resultat voulez-vous ?\n p : durées de travail réalisée et restante d’une personne sur une version\n n : nombre de jours et le pourcentage d’avance ou de retard sur une version \n d : durées totales de travail réalisées sur la production d’une version, pour chaque activité");
             switch (Console.ReadKey().Key)
             {
                 case ConsoleKey.D:               
                     while (!verif)
                     {
-                        Console.WriteLine("Sur quelle version");
+                        Console.WriteLine("\bSur quelle version");
                         string version = Console.ReadLine();
                         if (Genomica.Logiciel.ListeVersion.ContainsKey(version))
                         {                                                       //Affichage des durées de travail réalisées sur une version par activité
@@ -135,13 +135,13 @@ namespace JobOverview
                             verif = true;
                         }
                         else
-                            Console.WriteLine("Cette version n'existe pas");
+                            Console.WriteLine("\bCette version n'existe pas");
                     }
                     break;
                 case ConsoleKey.N:
                     while (!verif)
                     {
-                        Console.WriteLine("Sur quelle version");
+                        Console.WriteLine("\bSur quelle version");
                         string version = Console.ReadLine();
                         if (Genomica.Logiciel.ListeVersion.ContainsKey(version))
                         {                                                       //Affichage du nombre de jours d'avance ou de retard sur une version
@@ -149,19 +149,19 @@ namespace JobOverview
                             verif = true;
                         }
                         else
-                            Console.WriteLine("Cette version n'existe pas");
+                            Console.WriteLine("\bCette version n'existe pas");
                     }
                     break;
                 case ConsoleKey.P:
                     while (!verif)
                     {
-                        Console.WriteLine("Quelles sont les initiales de la personne?");
+                        Console.WriteLine("\bQuelles sont les initiales de la personne?");
                         string initial = Console.ReadLine().ToUpper();
                         if (listePersonne.ContainsKey(initial))
                         {
                             while (!verif)
                             {
-                                Console.WriteLine("Sur quelle version");
+                                Console.WriteLine("\bSur quelle version");
                                 string version = Console.ReadLine();
                                 if (Genomica.Logiciel.ListeVersion.ContainsKey(version))
                                 {                               //Affichage des durées de travail réalisée et restante qur une version par une personne
@@ -169,15 +169,15 @@ namespace JobOverview
                                     verif = true;
                                 }
                                 else
-                                    Console.WriteLine("Cette version n'existe pas");
+                                    Console.WriteLine("\bCette version n'existe pas");
                             }
                         }
                         else
-                            Console.WriteLine("Cette personne n'est pas dans la base de données");
+                            Console.WriteLine("\bCette personne n'est pas dans la base de données");
                     }
                     break;
                 default:
-                    Console.WriteLine("Ce n'est pas un résultat, appuyez sur une touche");
+                    Console.WriteLine("\bCe n'est pas un résultat, appuyez sur une touche");
                     break;
             }
         }
