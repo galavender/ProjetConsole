@@ -10,7 +10,7 @@ namespace ConsoleApplication1
     {
         #region Propriété
         public string libellé { get; set; }
-        public List<Versions> Version { get; set; }
+        public List<Versions> ListeVersion { get; set; }
         #endregion
     }
 }

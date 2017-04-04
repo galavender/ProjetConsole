@@ -25,6 +25,17 @@ namespace ConsoleApplication1
             ListeTache = new Dictionary<string, Taches>();
             ListeDonnées = new Dictionary<int, DonnéesGestionTaches>();
             ListePersonne = listePersonne;
+
+            //Initialise Version
+            var version1 = new Versions { DateDebut = new DateTime(2016, 01, 02), DatePubli = new DateTime(2017, 01, 08), Millésime = 2017, Numéro = "1.00" };
+            var version2 = new Versions { DateDebut = new DateTime(2016, 12, 28), DatePubli = new DateTime(), Millésime = 2018, Numéro = "2.00" };
+            var listeVersion = new List<Versions>();
+            listeVersion.Add(version1);
+            listeVersion.Add(version2);
+
+            //Initialise Logiciel
+            var logiciel = new Logiciels { libellé = "Genomica", ListeVersion = listeVersion };
+
         }
         #endregion
 
