@@ -13,11 +13,14 @@ namespace ConsoleApplication1
         {
             //Initialisation du dictionnaire Personne
             var listePersonne = new Dictionary<string, Personnes>();
-
             InitPersonne(ref listePersonne);
+
+            //Initialisation du Data Access Layer
             var Genomica = new DAL(listePersonne);
-            Genomica.ChargerDonnées();
+            Genomica.ChargerDonnées();                          //Chargement des données contenues dans le fichier données.txt
             SortedDictionary<string, Taches> ActiAne = new SortedDictionary<string, Taches>();
+
+            //initialisation des activités annexes
             InitActivitésAnnexes(ref ActiAne);
 
             while (true)
@@ -25,10 +28,10 @@ namespace ConsoleApplication1
                 Console.ReadKey();
                 Console.Clear();
                 Console.WriteLine("Quel action voulez-vous effectuer ? \n r : resultats\n a : Ajouter une activité annexe\n ");
-                switch (Console.ReadLine())
+                switch (Console.ReadLine())                                     //Choix des actions à effectuer
                 {
                     case "r":
-                        resultat(Genomica, listePersonne);
+                        resultat(Genomica, listePersonne);                      //
                         break;
                     case "a":
                         InitActivitésAnnexes(ref ActiAne);
@@ -159,7 +162,7 @@ namespace ConsoleApplication1
                                 string version = Console.ReadLine();
                                 if (version == "1.00" || version == "2.00")
                                 {
-                                    Console.WriteLine(Results.DuréeTravail(new Personnes() { Nom = listePersonne[initial].Nom, Prenom = listePersonne[initial].Prenom, Code = initial, Métier = listePersonne[initial].Métier }, version, Genomica));
+                                    Console.WriteLine(Results.DuréeTravail(listePersonne[initial], version, Genomica));
                                     verif = true;
                                 }
                                 else
