@@ -9,9 +9,11 @@ namespace ConsoleApplication1
     public static class Results
     {
         public static string DuréeTravail(Personnes personne, string version, DAL dal)
-        {
+        {                   
+                                        //Retourne la durée réalisée sur la version par la personne
             var d = dal.ListeDonnées.Where(a => a.Value.Personne.Code == personne.Code)
                 .Where(b => b.Value.Version.Numéro == version).Sum(c => c.Value.Tache.DuréeRéalisée);
+                                        //Retourne la durée restante sur la version pour la personne
             var d2 = dal.ListeDonnées.Where(a => a.Value.Personne.Code == personne.Code)
                 .Where(b => b.Value.Version.Numéro == version).Sum(c => c.Value.Tache.DuréeRestante);
             //Retourne un format d'affichage
@@ -21,8 +23,10 @@ namespace ConsoleApplication1
 
         public static string RetardVersion(string version, DAL dal)
         {
+                                    //Retourne la durée total de travail prévue sur une version
             var d = dal.ListeDonnées.Where(a => a.Value.Version.Numéro == version)
                 .Sum(b => b.Value.Tache.DuréePrévue);
+                                    //Retourne la durée total de travail réalisée sur une version
             var d2 = dal.ListeDonnées.Where(a => a.Value.Version.Numéro == version)
                 .Sum(b => b.Value.Tache.DuréeRéalisée);
 
@@ -37,9 +41,12 @@ namespace ConsoleApplication1
         public static string TotalTravailRéa(string version, DAL dal)
         {
             string jourTravaillé = string.Empty;
+
+                                    //Retourne la liste des code des activités
             var activité = dal.ListeDonnées.Select(u => u.Value.CodeActivité).Distinct();
             foreach (var d in activité)
             {
+                                    //Stocke les durées de travail réalisées sur une version par activité dans une variable de type string
                 var totalJourTravaillé = dal.ListeDonnées.Where(y => y.Value.Version.Numéro == version).Where(c => c.Value.CodeActivité == d).Sum(g => g.Value.Tache.DuréeRéalisée);
                 jourTravaillé += string.Format("{0} : {1}j\n",d, totalJourTravaillé);
             }

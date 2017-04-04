@@ -20,7 +20,7 @@ namespace ConsoleApplication1
             Genomica.ChargerDonnées();                          //Chargement des données contenues dans le fichier données.txt
             SortedDictionary<string, Taches> ActiAne = new SortedDictionary<string, Taches>();
 
-            //initialisation des activités annexes
+            //Initialisation des activités annexes
             InitActivitésAnnexes(ref ActiAne);
 
             while (true)
@@ -31,22 +31,18 @@ namespace ConsoleApplication1
                 switch (Console.ReadLine())                                     //Choix des actions à effectuer
                 {
                     case "r":
-                        resultat(Genomica, listePersonne);                      //
+                        resultat(Genomica, listePersonne);                      //Affichage de statistique sur les versions et les personnes qui travaillent dessus
                         break;
                     case "a":
-                        InitActivitésAnnexes(ref ActiAne);
+                        InitActivitésAnnexes(ref ActiAne);                      //Enregistrement d'activités annexes
                         break;
                     default:
                         Console.WriteLine("Ce n'est pas une action, appuyez sur une touche");
                         break;
                 }
             }
-
-            //Console.WriteLine(Results.DuréeTravail(new Personnes() { Nom = "Geneviève", Prenom = "Leclerq", Code = "GL", Métier =  CodeMetiers.ANA } ,"2.00", Genomica));
-            //Console.WriteLine(Results.RetardVersion("1.00", Genomica));
-            //Console.WriteLine(Results.TotalTravailRéa("1.00", Genomica));
-            //Console.ReadKey();
         }
+
         public static void InitPersonne(ref Dictionary<string, Personnes> listePersonne)
         {
             //Génération des instances personnes d'après fichier dans le dictionnaire associé
@@ -95,7 +91,7 @@ namespace ConsoleApplication1
                 {
                     Console.WriteLine("Veuillez saisir le nom de l'activité annexe correspondante:");
                     libellé = Console.ReadLine();
-                    ActiAne.Add(code, new Taches { Libellé = libellé });
+                    ActiAne.Add(code, new Taches { Libellé = libellé });                //Ajout de l'activité dans le dictionnaire
                     }
                 else
                 {
@@ -106,7 +102,7 @@ namespace ConsoleApplication1
                     PlusDActiAnn = true;
             }
 
-            Console.Clear();
+            Console.Clear();                                                            //Affichage des activités annexes triées par code
             foreach (var a in ActiAne)
             {
                 Console.WriteLine("Activité n°{0} : {1}", a.Key, a.Value.Libellé);
@@ -127,8 +123,8 @@ namespace ConsoleApplication1
                         Console.WriteLine("Sur quelle version");
                         string version = Console.ReadLine();
                         if (version == "1.00" || version == "2.00")
-                        {
-                            Console.WriteLine(Results.TotalTravailRéa(version, Genomica));
+                        {                                                       //Affichage des durées de travail réalisées sur une version par activité
+                            Console.WriteLine(Results.TotalTravailRéa(version, Genomica));      
                             verif = true;
                         }
                         else
@@ -141,8 +137,8 @@ namespace ConsoleApplication1
                         Console.WriteLine("Sur quelle version");
                         string version = Console.ReadLine();
                         if (version == "1.00" || version == "2.00")
-                        {
-                            Console.WriteLine(Results.RetardVersion(version, Genomica));
+                        {                                                           //Affichage du nombre de jours d'avance ou de retard sur une version
+                            Console.WriteLine(Results.RetardVersion(version, Genomica));        
                             verif = true;
                         }
                         else
@@ -161,7 +157,7 @@ namespace ConsoleApplication1
                                 Console.WriteLine("Sur quelle version");
                                 string version = Console.ReadLine();
                                 if (version == "1.00" || version == "2.00")
-                                {
+                                {                               //Affichage des durées de travail réalisée et restante qur une version par une personne
                                     Console.WriteLine(Results.DuréeTravail(listePersonne[initial], version, Genomica));
                                     verif = true;
                                 }
