@@ -41,7 +41,7 @@ namespace ConsoleApplication1
             foreach (var d in activité)
             {
                 var totalJourTravaillé = dal.ListeDonnées.Where(y => y.Value.Version.Numéro == version).Where(c => c.Value.CodeActivité == d).Sum(g => g.Value.Tache.DuréeRéalisée);
-                jourTravaillé += string.Format("{0} : {1}j\n",dal.ListeMétier[d].LibelléActivité, totalJourTravaillé);
+                jourTravaillé += string.Format("{0} : {1}j\n",d, totalJourTravaillé);
             }
             //Retourne  un format d'affichage complété dans la boucle foreach
             return jourTravaillé;
