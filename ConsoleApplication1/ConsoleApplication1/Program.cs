@@ -7,7 +7,7 @@ using System.IO;
 
 namespace ConsoleApplication1
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -44,12 +44,12 @@ namespace ConsoleApplication1
             //Console.WriteLine(Results.TotalTravailRéa("1.00", Genomica));
             //Console.ReadKey();
         }
-        static void InitPersonne(ref Dictionary<string, Personnes> listePersonne)
+        public static void InitPersonne(ref Dictionary<string, Personnes> listePersonne)
         {
             //Génération des instances personnes d'après fichier dans le dictionnaire associé
             string chemin = @"..\..\Personne.txt";
             int compteur = 0;
-            using (StreamReader str = new StreamReader(chemin))
+            using (StreamReader str = new StreamReader(chemin,System.Text.Encoding.Default))
             {
                 string ligne;
                 while ((ligne = str.ReadLine()) != null) //Boucle tant qu'il y a des lignes à lire
