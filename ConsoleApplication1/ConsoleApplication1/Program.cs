@@ -29,12 +29,12 @@ namespace JobOverview
                 Console.ReadKey();
                 Console.Clear();
                 Console.WriteLine("Quel action voulez-vous effectuer ? \n r : resultats\n a : Ajouter une activité annexe\n ");
-                switch (Console.ReadLine())                                     //Choix des actions à effectuer
+                switch (Console.ReadKey().Key)                                     //Choix des actions à effectuer
                 {
-                    case "r":
+                    case ConsoleKey.R:
                         resultat(Genomica, listePersonne);                      //Affichage de statistique sur les versions et les personnes qui travaillent dessus
                         break;
-                    case "a":
+                    case ConsoleKey.A:
                         InitActivitésAnnexes(ref ActiAne);                      //Enregistrement d'activités annexes
                         break;
                     default:
@@ -105,7 +105,7 @@ namespace JobOverview
                     Console.WriteLine("Ce code existe déjà, veuillez saisir un code différent");
                 }
                 Console.WriteLine("Voulez-vous saisir une autre activité annexe ? o/n");
-                if (Console.ReadLine() == "n")
+                if (Console.ReadKey().Key == ConsoleKey.N)
                     PlusDActiAnn = true;
             }
 
@@ -122,9 +122,9 @@ namespace JobOverview
         {
             bool verif = false;
             Console.WriteLine("Quel resultat voulez-vous ?\n p : durées de travail réalisée et restante d’une personne sur une version\n n : nombre de jours et le pourcentage d’avance ou de retard sur une version \n d : durées totales de travail réalisées sur la production d’une version, pour chaque activité");
-            switch (Console.ReadLine())
+            switch (Console.ReadKey().Key)
             {
-                case "d":               
+                case ConsoleKey.D:               
                     while (!verif)
                     {
                         Console.WriteLine("Sur quelle version");
@@ -138,7 +138,7 @@ namespace JobOverview
                             Console.WriteLine("Cette version n'existe pas");
                     }
                     break;
-                case "n":
+                case ConsoleKey.N:
                     while (!verif)
                     {
                         Console.WriteLine("Sur quelle version");
@@ -152,7 +152,7 @@ namespace JobOverview
                             Console.WriteLine("Cette version n'existe pas");
                     }
                     break;
-                case "p":
+                case ConsoleKey.P:
                     while (!verif)
                     {
                         Console.WriteLine("Quelles sont les initiales de la personne?");
