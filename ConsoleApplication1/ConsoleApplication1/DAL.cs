@@ -18,6 +18,11 @@ namespace JobOverview
         #endregion
 
         #region Constructeur
+        /// <summary>
+        /// Constructeur Data Acess Layer (DAL)
+        /// </summary>
+        /// <param name="listePersonne"></param>
+        /// <param name="listeMétier"></param>
         public DAL(Dictionary<string,Personnes> listePersonne,Dictionary<CodeMetiers,Metiers> listeMétier)
         {
             //Initialisation des dictionnaires
