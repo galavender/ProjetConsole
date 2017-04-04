@@ -20,6 +20,7 @@ namespace ConsoleApplication1
         #region Constructeur
         public DAL(Dictionary<string,Personnes> listePersonne)
         {
+            //Initialisation des dictionnaires
             ListeMétier = new Dictionary<Activités, Metiers>();
             ListeTache = new Dictionary<string, Taches>();
             ListeDonnées = new Dictionary<int, DonnéesGestionTaches>();
