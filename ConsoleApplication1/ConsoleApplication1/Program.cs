@@ -171,6 +171,7 @@ namespace ConsoleApplication1
                     }
                     break;
                 default:
+                    Console.WriteLine("Ce n'est pas un résultat, appuyez sur une touche");
                     break;
             }
         }
