@@ -12,15 +12,16 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             //Initialisation du dictionnaire Personne
+            var listeMétier = new Dictionary<CodeMetiers, Metiers>();
             var listePersonne = new Dictionary<string, Personnes>();
-            InitPersonne(ref listePersonne);
+            InitPersonne(ref listePersonne, ref listeMétier);
 
             //Initialisation du Data Access Layer
-            var Genomica = new DAL(listePersonne);
+            var Genomica = new DAL(listePersonne,listeMétier);
             Genomica.ChargerDonnées();                          //Chargement des données contenues dans le fichier données.txt
             SortedDictionary<string, Taches> ActiAne = new SortedDictionary<string, Taches>();
 
-            //Initialisation des activités annexes
+            //initialisation des activités annexes
             InitActivitésAnnexes(ref ActiAne);
 
             while (true)
@@ -31,20 +32,43 @@ namespace ConsoleApplication1
                 switch (Console.ReadLine())                                     //Choix des actions à effectuer
                 {
                     case "r":
-                        resultat(Genomica, listePersonne);                      //Affichage de statistique sur les versions et les personnes qui travaillent dessus
+                        resultat(Genomica, listePersonne);                      //
                         break;
                     case "a":
-                        InitActivitésAnnexes(ref ActiAne);                      //Enregistrement d'activités annexes
+                        InitActivitésAnnexes(ref ActiAne);
                         break;
                     default:
                         Console.WriteLine("Ce n'est pas une action, appuyez sur une touche");
                         break;
                 }
             }
-        }
 
-        public static void InitPersonne(ref Dictionary<string, Personnes> listePersonne)
+            //Console.WriteLine(Results.DuréeTravail(new Personnes() { Nom = "Geneviève", Prenom = "Leclerq", Code = "GL", Métier =  CodeMetiers.ANA } ,"2.00", Genomica));
+            //Console.WriteLine(Results.RetardVersion("1.00", Genomica));
+            //Console.WriteLine(Results.TotalTravailRéa("1.00", Genomica));
+            //Console.ReadKey();
+        }
+        public static void InitPersonne(ref Dictionary<string, Personnes> listePersonne,ref Dictionary<CodeMetiers,Metiers> listeMétier)
         {
+            //Initialisation des métiers et activités dans la liste Métier
+            //listeMétier.Add(Activités.DBE, new Metiers { Activité = Activités.DBE, LibelléActivité = LibelléActivités.DéfinitionDesBesoins, CodeMetier = CodeMetiers.ANA, LibelléMetier = LibelléMetiers.Analyste });
+            //listeMétier.Add(Activités.ARF, new Metiers { Activité = Activités.ARF, LibelléActivité = LibelléActivités.ArchitectureFonctionnelle, CodeMetier = CodeMetiers.ANA | CodeMetiers.CDP, LibelléMetier = LibelléMetiers.Analyste | LibelléMetiers.ChefDeProjet });
+            //listeMétier.Add(Activités.ANF, new Metiers { Activité = Activités.ANF, LibelléActivité = LibelléActivités.AnalyseFonctionnelle, CodeMetier = CodeMetiers.ANA | CodeMetiers.CDP | CodeMetiers.DEV | CodeMetiers.DES, LibelléMetier = LibelléMetiers.Analyste | LibelléMetiers.ChefDeProjet | LibelléMetiers.Développeur | LibelléMetiers.Designer });
+            //listeMétier.Add(Activités.DES, new Metiers { Activité = Activités.DES, LibelléActivité = LibelléActivités.Design, CodeMetier = CodeMetiers.DES, LibelléMetier = LibelléMetiers.Designer });
+            //listeMétier.Add(Activités.INF, new Metiers { Activité = Activités.INF, LibelléActivité = LibelléActivités.Infographie, CodeMetier = CodeMetiers.DES, LibelléMetier = LibelléMetiers.Designer });
+            //listeMétier.Add(Activités.ART, new Metiers { Activité = Activités.ART, LibelléActivité = LibelléActivités.ArchitectureTechnique, CodeMetier = CodeMetiers.CDP | CodeMetiers.DEV, LibelléMetier = LibelléMetiers.ChefDeProjet | LibelléMetiers.Développeur });
+            //listeMétier.Add(Activités.ANT, new Metiers { Activité = Activités.ANT, LibelléActivité = LibelléActivités.AnalyseTechnique, CodeMetier = CodeMetiers.DEV, LibelléMetier = LibelléMetiers.Développeur });
+            //listeMétier.Add(Activités.DEV, new Metiers { Activité = Activités.DEV, LibelléActivité = LibelléActivités.Développement, CodeMetier = CodeMetiers.DEV, LibelléMetier = LibelléMetiers.Développeur });
+            //listeMétier.Add(Activités.RPT, new Metiers { Activité = Activités.RPT, LibelléActivité = LibelléActivités.RédactionDePlanDeTest, CodeMetier = CodeMetiers.TES, LibelléMetier = LibelléMetiers.Testeur });
+            //listeMétier.Add(Activités.TES, new Metiers { Activité = Activités.TES, LibelléActivité = LibelléActivités.Test, CodeMetier = CodeMetiers.TES | CodeMetiers.DEV, LibelléMetier = LibelléMetiers.Testeur | LibelléMetiers.Développeur });
+            //listeMétier.Add(Activités.GDP, new Metiers { Activité = Activités.GDP, LibelléActivité = LibelléActivités.GestionDeProjet, CodeMetier = CodeMetiers.CDP, LibelléMetier = LibelléMetiers.ChefDeProjet });
+
+            listeMétier.Add(CodeMetiers.ANA, new Metiers { Activité = Activités.DBE | Activités.ARF | Activités.ANF, LibelléActivité = LibelléActivités.DéfinitionDesBesoins | LibelléActivités.ArchitectureFonctionnelle | LibelléActivités.AnalyseFonctionnelle, CodeMetier = CodeMetiers.ANA, LibelléMetier = LibelléMetiers.Analyste });
+            listeMétier.Add(CodeMetiers.CDP, new Metiers { Activité = Activités.ARF | Activités.ANF | Activités.ART|Activités.TES|Activités.GDP, LibelléActivité = LibelléActivités.ArchitectureFonctionnelle| LibelléActivités.AnalyseFonctionnelle | LibelléActivités.ArchitectureTechnique|LibelléActivités.Test|LibelléActivités.GestionDeProjet, CodeMetier = CodeMetiers.CDP, LibelléMetier = LibelléMetiers.ChefDeProjet });
+            listeMétier.Add(CodeMetiers.DEV, new Metiers { Activité = Activités.ANF | Activités.ART | Activités.ANT | Activités.DEV | Activités.TES, LibelléActivité = LibelléActivités.AnalyseFonctionnelle | LibelléActivités.ArchitectureTechnique | LibelléActivités.AnalyseTechnique | LibelléActivités.Développement | LibelléActivités.Test, CodeMetier = CodeMetiers.DEV, LibelléMetier = LibelléMetiers.Développeur });
+            listeMétier.Add(CodeMetiers.DES, new Metiers { Activité = Activités.ANF | Activités.DES | Activités.INF, LibelléActivité = LibelléActivités.AnalyseFonctionnelle | LibelléActivités.Design | LibelléActivités.Infographie, CodeMetier = CodeMetiers.DES, LibelléMetier = LibelléMetiers.Designer });
+            listeMétier.Add(CodeMetiers.TES, new Metiers { Activité = Activités.RPT | Activités.TES, LibelléActivité = LibelléActivités.RédactionDePlanDeTest | LibelléActivités.Test, CodeMetier = CodeMetiers.TES, LibelléMetier = LibelléMetiers.Testeur });
+
             //Génération des instances personnes d'après fichier dans le dictionnaire associé
             string chemin = @"..\..\Personne.txt";
             int compteur = 0;
@@ -63,7 +87,7 @@ namespace ConsoleApplication1
                             Code = tab[0],
                             Prenom = tab[1],
                             Nom = tab[2],
-                            Métier = (CodeMetiers)Enum.Parse(typeof(CodeMetiers), tab[3])
+                            Métier = listeMétier[(CodeMetiers)Enum.Parse(typeof(CodeMetiers), tab[3])]
                         };
                         //Ajout de l'instance DonnéesGestionTaches à la collection de données
                         listePersonne.Add(Personne.Code, Personne);
@@ -91,7 +115,7 @@ namespace ConsoleApplication1
                 {
                     Console.WriteLine("Veuillez saisir le nom de l'activité annexe correspondante:");
                     libellé = Console.ReadLine();
-                    ActiAne.Add(code, new Taches { Libellé = libellé });                //Ajout de l'activité dans le dictionnaire
+                    ActiAne.Add(code, new Taches { Libellé = libellé });
                     }
                 else
                 {
@@ -102,7 +126,7 @@ namespace ConsoleApplication1
                     PlusDActiAnn = true;
             }
 
-            Console.Clear();                                                            //Affichage des activités annexes triées par code
+            Console.Clear();
             foreach (var a in ActiAne)
             {
                 Console.WriteLine("Activité n°{0} : {1}", a.Key, a.Value.Libellé);
@@ -123,8 +147,8 @@ namespace ConsoleApplication1
                         Console.WriteLine("Sur quelle version");
                         string version = Console.ReadLine();
                         if (version == "1.00" || version == "2.00")
-                        {                                                       //Affichage des durées de travail réalisées sur une version par activité
-                            Console.WriteLine(Results.TotalTravailRéa(version, Genomica));      
+                        {
+                            Console.WriteLine(Results.TotalTravailRéa(version, Genomica));
                             verif = true;
                         }
                         else
@@ -137,8 +161,8 @@ namespace ConsoleApplication1
                         Console.WriteLine("Sur quelle version");
                         string version = Console.ReadLine();
                         if (version == "1.00" || version == "2.00")
-                        {                                                           //Affichage du nombre de jours d'avance ou de retard sur une version
-                            Console.WriteLine(Results.RetardVersion(version, Genomica));        
+                        {
+                            Console.WriteLine(Results.RetardVersion(version, Genomica));
                             verif = true;
                         }
                         else
@@ -157,7 +181,7 @@ namespace ConsoleApplication1
                                 Console.WriteLine("Sur quelle version");
                                 string version = Console.ReadLine();
                                 if (version == "1.00" || version == "2.00")
-                                {                               //Affichage des durées de travail réalisée et restante qur une version par une personne
+                                {
                                     Console.WriteLine(Results.DuréeTravail(listePersonne[initial], version, Genomica));
                                     verif = true;
                                 }
