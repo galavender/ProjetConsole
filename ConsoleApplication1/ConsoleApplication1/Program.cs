@@ -11,8 +11,9 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            //Initialisation des dictionnaires
+            //Initialisation du dictionnaire Personne
             var listePersonne = new Dictionary<string, Personnes>();
+
             InitPersonne(ref listePersonne);
             var Genomica = new DAL(listePersonne);
             Genomica.ChargerDonnées();
