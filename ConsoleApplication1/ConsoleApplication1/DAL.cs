@@ -18,44 +18,12 @@ namespace ConsoleApplication1
         #endregion
 
         #region Constructeur
-        public DAL()
+        public DAL(Dictionary<string,Personnes> listePersonne)
         {
-            //Initialisation des dictionnaires
             ListeMétier = new Dictionary<Activités, Metiers>();
-            ListePersonne = new Dictionary<string, Personnes>();
             ListeTache = new Dictionary<string, Taches>();
             ListeDonnées = new Dictionary<int, DonnéesGestionTaches>();
-
-            //Génération des instances personnes d'après fichier dans le dictionnaire associé
-            string chemin = @"..\..\Personne.txt";
-            int compteur = 0;
-            using (StreamReader str = new StreamReader(chemin))
-            {
-                string ligne;
-                while ((ligne = str.ReadLine()) != null) //Boucle tant qu'il y a des lignes à lire
-                {
-                    compteur++;
-                    var tab = ligne.Split('\t');
-                    try
-                    {
-                        //Initialise une instance de Personne
-                        var Personne = new Personnes
-                        {
-                            Code = tab[0],
-                            Prenom = tab[1],
-                            Nom = tab[2],
-                            Métier = (CodeMetiers)Enum.Parse(typeof(CodeMetiers), tab[3])
-                        };
-                        //Ajout de l'instance DonnéesGestionTaches à la collection de données
-                        ListePersonne.Add(Personne.Code, Personne);
-                    }
-                    catch (FormatException)
-                    {
-                        //Lève une exception si le format des données du fichier n'est pas bon.
-                        throw new FormatException("Une erreur de format a été identifié dans le fichier de données à la ligne");
-                    }
-                }
-            }
+            ListePersonne = listePersonne;
 
             //Initialisation des métiers et activités dans la liste Métier
             ListeMétier.Add(Activités.DBE ,new Metiers { Activité = Activités.DBE, LibelléActivité = LibelléActivités.DéfinitionDesBesoins, CodeMetier = CodeMetiers.ANA, LibelléMetier = LibelléMetiers.Analyste });

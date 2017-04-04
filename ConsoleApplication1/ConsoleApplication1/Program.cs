@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ConsoleApplication1
 {
@@ -10,7 +11,10 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            var Genomica = new DAL();
+            //Initialisation des dictionnaires
+            var listePersonne = new Dictionary<string, Personnes>();
+            InitPersonne(ref listePersonne);
+            var Genomica = new DAL(listePersonne);
             Genomica.ChargerDonnées();
             SortedDictionary<string, Taches> ActiAne = new SortedDictionary<string, Taches>();
             InitActivitésAnnexes(ref ActiAne);
@@ -39,7 +43,39 @@ namespace ConsoleApplication1
             //Console.WriteLine(Results.TotalTravailRéa("1.00", Genomica));
             //Console.ReadKey();
         }
-
+        static void InitPersonne(ref Dictionary<string, Personnes> listePersonne)
+        {
+            //Génération des instances personnes d'après fichier dans le dictionnaire associé
+            string chemin = @"..\..\Personne.txt";
+            int compteur = 0;
+            using (StreamReader str = new StreamReader(chemin))
+            {
+                string ligne;
+                while ((ligne = str.ReadLine()) != null) //Boucle tant qu'il y a des lignes à lire
+                {
+                    compteur++;
+                    var tab = ligne.Split('\t');
+                    try
+                    {
+                        //Initialise une instance de Personne
+                        var Personne = new Personnes
+                        {
+                            Code = tab[0],
+                            Prenom = tab[1],
+                            Nom = tab[2],
+                            Métier = (CodeMetiers)Enum.Parse(typeof(CodeMetiers), tab[3])
+                        };
+                        //Ajout de l'instance DonnéesGestionTaches à la collection de données
+                        listePersonne.Add(Personne.Code, Personne);
+                    }
+                    catch (FormatException)
+                    {
+                        //Lève une exception si le format des données du fichier n'est pas bon.
+                        throw new FormatException("Une erreur de format a été identifié dans le fichier de données à la ligne");
+                    }
+                }
+            }
+        }
 
         static void InitActivitésAnnexes(ref SortedDictionary<string, Taches> ActiAne)
         {
