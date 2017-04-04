@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication1
+namespace JobOverview
 {
     public class Logiciels
     {
         #region Propriété
         public string libellé { get; set; }
-        public List<Versions> ListeVersion { get; set; }
+        public Dictionary<string,Versions> ListeVersion { get; set; }
         #endregion
     }
 }

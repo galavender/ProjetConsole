@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace ConsoleApplication1
+namespace JobOverview
 {
     public class DAL
     {
@@ -29,9 +29,9 @@ namespace ConsoleApplication1
             //Initialise Version
             var version1 = new Versions { DateDebut = new DateTime(2016, 01, 02), DatePubli = new DateTime(2017, 01, 08), Millésime = 2017, Numéro = "1.00" };
             var version2 = new Versions { DateDebut = new DateTime(2016, 12, 28), DatePubli = new DateTime(), Millésime = 2018, Numéro = "2.00" };
-            var listeVersion = new List<Versions>();
-            listeVersion.Add(version1);
-            listeVersion.Add(version2);
+            var listeVersion = new Dictionary<string,Versions>();
+            listeVersion.Add("1.00",version1);
+            listeVersion.Add("2.00",version2);
 
             //Initialise Logiciel
             var logiciel = new Logiciels { libellé = "Genomica", ListeVersion = listeVersion };
