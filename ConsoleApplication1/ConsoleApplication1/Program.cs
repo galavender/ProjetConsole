@@ -143,7 +143,7 @@ namespace JobOverview
                     {
                         Console.WriteLine("Sur quelle version");
                         string version = Console.ReadLine();
-                        if (version == "1.00" || version == "2.00")
+                        if (Genomica.Logiciel.ListeVersion.ContainsKey(version))
                         {                                                       //Affichage du nombre de jours d'avance ou de retard sur une version
                             Console.WriteLine(Results.RetardVersion(version, Genomica));
                             verif = true;
@@ -163,7 +163,7 @@ namespace JobOverview
                             {
                                 Console.WriteLine("Sur quelle version");
                                 string version = Console.ReadLine();
-                                if (version == "1.00" || version == "2.00")
+                                if (Genomica.Logiciel.ListeVersion.ContainsKey(version))
                                 {                               //Affichage des durées de travail réalisée et restante qur une version par une personne
                                     Console.WriteLine(Results.DuréeTravail(listePersonne[initial], version, Genomica));
                                     verif = true;

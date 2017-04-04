@@ -34,7 +34,7 @@ namespace JobOverview
             listeVersion.Add("2.00",version2);
 
             //Initialise Logiciel
-            var logiciel = new Logiciels { libellé = "Genomica", ListeVersion = listeVersion };
+            Logiciel = new Logiciels { libellé = "Genomica", ListeVersion = listeVersion };
 
         }
         #endregion
