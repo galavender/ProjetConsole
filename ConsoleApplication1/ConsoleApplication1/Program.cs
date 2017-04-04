@@ -32,10 +32,10 @@ namespace JobOverview
                 switch (Console.ReadLine())                                     //Choix des actions à effectuer
                 {
                     case "r":
-                        resultat(Genomica, listePersonne);                      //
+                        resultat(Genomica, listePersonne);                      //Affichage de statistique sur les versions et les personnes qui travaillent dessus
                         break;
                     case "a":
-                        InitActivitésAnnexes(ref ActiAne);
+                        InitActivitésAnnexes(ref ActiAne);                      //Enregistrement d'activités annexes
                         break;
                     default:
                         Console.WriteLine("Ce n'est pas une action, appuyez sur une touche");
@@ -98,8 +98,8 @@ namespace JobOverview
                 {
                     Console.WriteLine("Veuillez saisir le nom de l'activité annexe correspondante:");
                     libellé = Console.ReadLine();
-                    ActiAne.Add(code, new Taches { Libellé = libellé });
-                    }
+                    ActiAne.Add(code, new Taches { Libellé = libellé });                //Ajout de l'activité dans le dictionnaire
+                }
                 else
                 {
                     Console.WriteLine("Ce code existe déjà, veuillez saisir un code différent");
@@ -110,7 +110,7 @@ namespace JobOverview
             }
 
             Console.Clear();
-            foreach (var a in ActiAne)
+            foreach (var a in ActiAne)                                                  //Affichage des activités annexes triées par code
             {
                 Console.WriteLine("Activité n°{0} : {1}", a.Key, a.Value.Libellé);
             }
@@ -130,7 +130,7 @@ namespace JobOverview
                         Console.WriteLine("Sur quelle version");
                         string version = Console.ReadLine();
                         if (Genomica.Logiciel.ListeVersion.ContainsKey(version))
-                        {
+                        {                                                       //Affichage des durées de travail réalisées sur une version par activité
                             Console.WriteLine(Results.TotalTravailRéa(version, Genomica));
                             verif = true;
                         }
@@ -144,7 +144,7 @@ namespace JobOverview
                         Console.WriteLine("Sur quelle version");
                         string version = Console.ReadLine();
                         if (version == "1.00" || version == "2.00")
-                        {
+                        {                                                       //Affichage du nombre de jours d'avance ou de retard sur une version
                             Console.WriteLine(Results.RetardVersion(version, Genomica));
                             verif = true;
                         }
@@ -164,7 +164,7 @@ namespace JobOverview
                                 Console.WriteLine("Sur quelle version");
                                 string version = Console.ReadLine();
                                 if (version == "1.00" || version == "2.00")
-                                {
+                                {                               //Affichage des durées de travail réalisée et restante qur une version par une personne
                                     Console.WriteLine(Results.DuréeTravail(listePersonne[initial], version, Genomica));
                                     verif = true;
                                 }
